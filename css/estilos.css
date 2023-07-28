@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Raleway:wght@400;700;800&display=swap');
+
+/* Alterando o Box Model CSS
+para evitar dificuldades com dimensões
+(largura, altura, bordas e espaçamentos) */
+* { box-sizing: border-box; }
+
+/* Definindo um tamanho padrão/referência para uso com medida REM */
+html { font-size: 14px; }
+
+header {
+    /* Tornando o cabeçalho fixo ao rolar a páginas com 'position: sticky; top:0' */
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}    
+header .limitador {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Reset de espaçamento de alguns elementos */
+body, h1, h2, p, figure, .menu {
+    margin: 0;
+    padding: 0;
+}
+
+/* Tornando todas imagens flexiveis */
+img { max-width: 100%; }
+
+body {
+    /* 1 Etapa da solução do rodapé */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    font-family: 'Noto Sans', Verdana, Arial, sans-serif;
+    background-color: white;
+     /* Importante declarar mesmo que seja branco, 
+    já que o padrão é transparente (pode causar 
+    inconsistências quando exibido em aparelhos
+    com modo noturno ativado). */
+}
+
+    /* Etapa 2 solução do rodape */
+main {flex: 1;}
+
+a {text-decoration: none;}
+
+h1 a {
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+}
+
+h1 { 
+    /* Google Fonts */
+    font-family: Raleway, sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+nav h2 a {
+    color: black;
+    font-size: 1.2rem;
+    padding: 1rem;
+    display: inline-block;
+}
+
+
+nav a:hover, nav a:focus {
+    background-color: grey;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    height: 12vh;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+form {
+    width: 95%;
+    margin: auto;
+    padding: 1rem;
+}
+form div {margin-top: 1rem}
+
+input:not([type=radio], [type=checkbox]), select, textarea {
+    border: none;
+    padding: 8px;
+    width: 100%;
+    box-shadow: darkgrey 0 0 5px;
+    height: 40px;
+    font-size: 1.1rem;
+}
+
+/* Devolvendo o tamanho da altura ao padrão dps da formatação */
+textarea {
+    height: auto;
+    max-height: 400px;
+    max-width: 600px;
+    min-height: 200px;
+    min-width: 200px;
+    /* resize: none; = desabilita que o usario mude o tamanho da caixa de texto */
+}
+
+/* Regras dos nomes/rótulos de cada campo */
+label {font-size: 1.2rem;}
+
+button {
+    border: none;
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+}
+button:hover, button:focus {
+    cursor: pointer;
+    background-color: #888;
+}
+
+table, th, td {
+    border: black solid 2px;
+
+    /* Removo o espaçamento entre as bordas */
+    border-collapse: collapse;
+}
+
+table {
+    margin: auto;
+    width: 80%;
+    max-width: 600px;
+}
+
+caption {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+}
+
+th {
+    background-color: black;
+    color: white;
+    padding: 1rem;
+}
+
+td {
+    padding: 10px;
+    font-size: 1.1rem;
+}
+
+/* Produtos */
+td:first-child { text-transform: uppercase; }
+
+/* Dias */
+td:nth-child(2) { text-align: center; }
+
+/* Valores */
+td:last-child {
+    font-weight: bold; 
+    text-align: right;
+}
+
+/* Linhas (even) */
+tr:nth-child(even) {background-color: #e1e1e1;}
+
+/* Linhas (odd) */
+tr:nth-child(odd) {background-color: white;}
+
+.menu {
+    list-style: none;
+    display: none;
+    /* display: none = IMPORTANTE para o funcionamento do menu responsivo */
+}
+
+.menu a {
+    color: black;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+/* ATENÇÃO 
+A regra abaixo somente irá funcionar com o auxílio de progamação JavaScript
+
+Objetivo: Quando duas classes (menu e aberto) estiverem combinadas, o menu será exibido completamente
+*/
+
+.menu.aberto {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    background-color: white;
+}
+
+.destaque {
+    background-image: url(../imagens/fundo-destaque.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+}
+
+.destaque h2, .destaque p {
+    color: white;
+    text-align: center;
+}
+
+.destaque h2 {
+    font-size: clamp(3rem, 10vw, 6rem) ;
+    /* Função clamp() utiliza valor mínimo, desejavel/flexivel e valor máximo */
+    font-family: Raleway, sans-serif;
+    font-weight: 800;
+
+    animation-name: animaDestaques;
+    animation-duration: 2s;
+}
+
+.destaque p {
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    font-weight: bold;
+
+    
+    animation-name: animaDestaques;
+    animation-duration: 2s;
+
+    /* Atraso antes de iniciar a animação */
+    animation-delay: 1.5s;
+
+    /* Backwards = pra animação vir diretamente de fora */
+    animation-fill-mode: backwards;
+
+    /* Aceleração */
+    /* animation-timing-function: cubic-bezier(); */
+}
+
+    /* ETAPA 1: Criar regra de animação  */
+@keyframes animaDestaques {
+    /* como começa */
+    from { 
+        opacity: 0;
+        transform: translateY(-600px);
+    }
+
+    /* como termina */
+    to { opacity: 1; }
+}
+
+article h2 {
+    padding: 1rem;
+    font-family: Raleway, sans-serif;
+    color: #6b6b6b;
+    font-size: 1.8rem;
+}
+
+article p, article address {
+    padding: 0.5rem 0;
+    font-size: 1.3rem;
+}
+
+/* remover o itálico do address */
+article address {font-style: normal;}
+
+
+.front-end, .historia, .localizacao, footer {text-align: center;}
+
+.historia {
+    background-image: url(../imagens/fundo-madeira.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+.historia h2 {
+    color: white;
+    text-shadow: black 1px 1px 3px;
+}
+
+.historia iframe {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+.localizacao iframe {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.front-end figure {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.limitador {
+    width: 95vw;
+    margin: auto;
+}
+
+.conteudo {
+    background-color: #e1e1e1;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.conteudo h2 {
+    padding-left: 0;
+    text-align: center;
+}
+
+.galeria-servicos {text-align: center;}
+
+.galeria-servicos img{
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px #000000a6;
+    
+    transform: scale(0.8);
+    filter: grayscale(100%) blur(1px);
+    transition: 0.5s;
+
+}
+.galeria-servicos img:hover {
+    cursor: pointer;
+    filter: none;
+    transform: scale(1);
+}
+
+/* REGRAS CONDICIONAIS */
+
+/* Para telas a partir de 530px */
+@media screen and (min-width: 530px) {
+    /* Esconder a palavra menu */
+    nav h2 { display: none; }
+
+    /* Fazer aparecer e deixar lado a lado os itens da lista/menu */
+    .menu { display: flex; }
+
+    /* Ao devolver o tamanho de 100% para cada <li> na prática isso criará um espaçamento no texto/link */
+    .menu li { 
+        width: 100%;
+        text-transform: uppercase; 
+    }
+
+    .menu li a { padding: 1rem; }
+
+    nav { width: 70%;}
+
+}
+
+/* Para telas a partir de 1000px */
+@media screen and (min-width:1000px) {
+    html {font-size: 16px;}
+    .limitador {max-width: 1000px;}
+}

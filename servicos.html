@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - Simplicity</title>
+
+    <!-- Importação CSS do plugin Lightbox (Galeria de fotos) *SEMPRE COLOCAR LINKS EXTERNOS ANTES DA SUA REF -->
+    <link rel="stylesheet" href="lightbox/css/lightbox.min.css">
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    
+    <!-- Cabeçalho -->
+    <header>
+        <div class="limitador">
+            <h1>
+            <a href="index.html">
+                Simplicity
+            </a>
+            </h1>
+            <nav>
+           
+            <h2><a href="" class="icone">Menu &equiv;</a></h2>
+
+           
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            </nav>
+        </div>    
+    </header>
+
+    <!-- Área de conteúdo -->
+    <main> 
+        <article class="limitador conteudo">
+            <h2>Serviços</h2>
+            
+            <!-- (p>lorem15)*2 - criar linhas de paragrafo com lorem-->
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed nam qui nesciunt quis in. Nobis.</p>
+            <p>Repellat fugit saepe doloremque facere cupiditate repudiandae, delectus ullam dolore ex. Alias doloribus dolor voluptatibus?</p>
+
+            <figure class="galeria-servicos">
+                <a href="imagens/desenvolvimento-web.jpg" data-lightbox="galeria-servicos" data-title="Front-end">
+                    <img src="imagens/desenvolvimento-web-mini.jpg" alt="">
+                </a>
+
+                <a href="imagens/design-grafico.jpg" data-lightbox="galeria-servicos" data-title="Criatividade">
+                    <img src="imagens/design-grafico-mini.jpg" alt="">
+                </a>
+
+                <a href="imagens/marketing-digital.jpg" data-lightbox="galeria-servicos"
+                data-title="Vendas online">
+                    <img src="imagens/marketing-digital-mini.jpg" alt="">
+                </a>
+
+                <a href="imagens/consultoria-treinamento.jpg" data-lightbox="galeria-servicos"
+                data-title="Consultoria">
+                    <img src="imagens/consultoria-treinamento-mini.jpg" alt="">
+                </a>
+            </figure>
+            
+        </article>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer>
+        <p>Simplicity é um site fictício desenvolvido 
+        educacionalmente <br> Senac Penha &copy; 2023 
+        </p>
+    </footer>
+
+    <!-- Importação do jQuery p/ página serviços -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Importação do plugin Lightbox -->
+    <script src="lightbox/js/lightbox.min.js"></script>
+    <script src="js/menu.js"></script>
+
+    <!-- Mexendo nas configurações do Lightbox com um scrpit interno -->
+    <script>
+        lightbox.option({
+            resizeDuration: 100,
+            wrapAround: true,
+            albumLabel: "Foto %1 de %2",
+            alwaysShowNavOnTouchDevices: true
+        })
+    </script>
+
+</body>
+</html>
